@@ -54,6 +54,7 @@ function loadquestion() {
     result.innerHTML = "";
     sendbtn.style.display = "none";
     restartbtn.style.display = "inline-block";
+    document.querySelector(".lives").innerText = "Vidas restantes: " + lives;
     return;
   }
 
@@ -62,6 +63,7 @@ function loadquestion() {
     result.innerHTML = "<p>Agora, volte para a página principal e confira o outro jogo!</p>";
     sendbtn.style.display = "none";
     restartbtn.style.display = "inline-block";
+    document.querySelector(".lives").innerText = "Vidas restantes: " + lives;
     return;
   }
 
@@ -78,7 +80,7 @@ function loadquestion() {
     </form>
   `;
   result.innerHTML = "";
-  document.querySelector("p.lives").innerText = "Vidas restantes: " + lives;
+  document.querySelector(".lives").innerText = "Vidas restantes: " + lives;
 }
 
 function checkanswer() {
@@ -98,12 +100,13 @@ function checkanswer() {
   } else {
     lives--;
     result.innerHTML = `<p style='color:red;'>❌ Errado. A resposta correta é: ${correct}.</p>`;
-    document.querySelector("p.lives").innerText = "Vidas restantes: " + lives;
+    document.querySelector(".lives").innerText = "Vidas restantes: " + lives;
     if (lives <= 0) {
       quiz.innerHTML = "<p>💀 Suas vidas acabaram! Fim de jogo.</p>";
       result.innerHTML = "";
       sendbtn.style.display = "none";
       restartbtn.style.display = "inline-block";
+      document.querySelector(".lives").innerText = "Vidas restantes: " + lives;
       return;
     }
   }
@@ -119,12 +122,11 @@ function restartgame() {
   lives = 3;
   sendbtn.style.display = "inline-block";
   restartbtn.style.display = "none";
-  document.querySelector("p.lives").innerText = "Vidas restantes: " + lives;
+  document.querySelector(".lives").innerText = "Vidas restantes: " + lives;
   loadquestion();
 }
 
 document.body.insertAdjacentHTML("afterbegin", "<p class='lives' style='text-align:center; font-size:18px; color:#d32f2f;'>Vidas restantes: 3</p>");
-
 loadquestion();
 
 // Adiciona/remover classe de centralização vertical conforme tamanho da tela
